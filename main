@@ -1,0 +1,19 @@
+package file;
+
+public class main {
+    public static void main(String[] args) {
+        String filePath = "sample.txt";
+
+        // 1. Write content
+        FileWriterUtil.writeToFile(filePath, "Java is power full");
+
+        // 2. Read content
+        FileReaderUtil.readFile(filePath);
+
+        // 3. Modify content (e.g., replace "Java" with "Python")
+        FileModifierUtil.modifyFile(filePath, "Java", "Python");
+
+        // 4. Read content again
+        FileReaderUtil.readFile(filePath);
+    }
+}
