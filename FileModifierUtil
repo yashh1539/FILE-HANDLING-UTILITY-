@@ -1,0 +1,28 @@
+
+import java.io.*;
+
+public class FileModifierUtil {
+    public static void modifyFile(String filePath, String target, String replacement) {
+        System.out.println("\n[Modifying File]");
+        StringBuilder content = new StringBuilder();
+
+        // Read the original content
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null)
+                content.append(line.replaceAll(target, replacement)).append("\n");
+        } catch (IOException e) {
+            System.err.println("Error reading file for modification: " + e.getMessage());
+            return;
+        }
+
+        // Write the modified content back
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(content.toString());
+            System.out.println("File modified successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing modified content: " + e.getMessage());
+        }
+    }
+}
+
